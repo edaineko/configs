@@ -15,3 +15,11 @@ sudo firewall-cmd --reload
 
 
 # Install Apache
+sudo yum install httpd
+
+# Remove the default Apache welcome page:
+sudo cp /etc/httpd/conf.d/welcome.conf /etc/httpd/conf.d/welcome.conf.bak
+sudo sed -i 's/^/#&/g' /etc/httpd/conf.d/welcome.conf
+
+sudo systemctl enable httpd.service
+sudo systemctl restart httpd.service
